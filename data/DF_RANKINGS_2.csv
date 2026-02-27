@@ -1,0 +1,21 @@
+team,season_points,goals_for,goals_against,goal_diff,rank
+Liverpool,84,86,41,45,1.0
+Arsenal,74,69,34,35,2.0
+Man City,71,72,44,28,3.0
+Chelsea,69,64,43,21,4.0
+Newcastle,66,68,47,21,5.0
+Aston Villa,66,58,51,7,6.0
+Nott'm Forest,65,58,46,12,7.0
+Brighton,61,66,59,7,8.0
+Bournemouth,56,58,46,12,9.0
+Brentford,56,66,57,9,10.0
+Fulham,54,54,54,0,11.0
+Crystal Palace,53,51,51,0,12.0
+Everton,48,42,44,-2,13.0
+West Ham,43,46,62,-16,14.0
+Man United,42,44,54,-10,15.0
+Wolves,42,54,69,-15,16.0
+Tottenham,38,64,65,-1,17.0
+Leicester,25,33,80,-47,18.0
+Ipswich,22,36,82,-46,19.0
+Southampton,12,26,86,-60,20.0
