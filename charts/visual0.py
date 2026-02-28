@@ -7,8 +7,7 @@ def chart_heatmap_timeline(df_team, df_rankings):
     df = df_team.merge(df_rankings[['team', 'rank']], how='left', on='team')
 
     # Sort by team and date, then assign game number
-    df_team = df_team.sort_values(['team', 'date'])
-    df_team['game_num'] = df_team.groupby('team').cumcount() + 1  # nth game, 1-indexed
+    df_team['game_num'] = df_team.sort_values(['team', 'date']).groupby('team').cumcount() + 1  # nth game, 1-indexed
 
         # Ensure 'date' is datetime
     df['date'] = pd.to_datetime(df['date'])

@@ -5,7 +5,7 @@ import altair as alt
 
 from utils.io import load_data
 from charts.theme import base_theme
-from charts.visual0 import chart_heatmap_timeline, chart_heatmap_table_summary, chart_heatmap_table_discipline
+from charts.visual0 import chart_heatmap_table_summary, chart_heatmap_table_discipline
 
 
 st.set_page_config(page_title="English Premier League Dashboard", layout="wide")
