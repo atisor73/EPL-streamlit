@@ -5,7 +5,7 @@ import altair as alt
 
 from utils.io import load_data
 from charts.theme import base_theme
-from charts.visual0 import chart_heatmap_table_summary, chart_heatmap_table_discipline
+from charts.visual0 import chart_heatmap_timeline, chart_heatmap_table_summary, chart_heatmap_table_discipline
 
 
 st.set_page_config(page_title="English Premier League Dashboard", layout="wide")
@@ -16,6 +16,7 @@ df_match_1, df_match_2, df_team_1, df_team_2, df_rankings_1, df_rankings_2 = loa
 
 
 st.title("English Premier League")
+st.markdown("Season match visualization: S2023-2024, S2024-2025")
 
 st.write("This project is meant to serve as a demonstration of how Streamlit can be used \
     to deploy a web-app with interactive Altair charts. These solutions were created by \
@@ -55,8 +56,8 @@ st.markdown(
 )
 
 
+# TEAM STATS --------------------------------------------------------------
 st.header("Team Stats")
-
 
 # --- Conditional rendering ---
 if season == "Season 2":
@@ -70,7 +71,7 @@ else:
         use_container_width=False
     )
 
-
+# FOUL STATS --------------------------------------------------------------
 st.header("Foul Stats")
 
 # --- Conditional rendering ---
@@ -91,8 +92,9 @@ st.markdown("""
 
 st.write(
     "In the following sections we explore additional visuals through the pages in the sidebar:\n"
-    "- **Goal differences**: Visualize individual match performances and how goal differences relate to shot and goal accuracies..\n"
-    "- **Foul distribution**: Look at distribution of fouls and cards by referees and teams.\n"
+    "- **Performance timeline**: Visualize a team’s match results across the season.\n"
+    "- **Goal differences**: Visualize individual match results and how goal differences relate to shot and goal accuracies.\n"
+    "- **Foul distribution**: Compare distribution of fouls and cards by referees and teams.\n"
     "- **Season improvements**: Track how team rankings change from 2023-2024 to 2024-2025. \n"
 )
 

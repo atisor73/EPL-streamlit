@@ -2,6 +2,45 @@ import altair as alt
 import pandas as pd
 import numpy as np
 
+
+def chart_heatmap_timeline(df_team, df_rankings):
+    df = df_team.merge(df_rankings[['team', 'rank']], how='left', on='team')
+
+    # Sort by team and date, then assign game number
+    df_team = df_team.sort_values(['team', 'date'])
+    df_team['game_num'] = df_team.groupby('team').cumcount() + 1  # nth game, 1-indexed
+
+        # Ensure 'date' is datetime
+    df['date'] = pd.to_datetime(df['date'])
+
+    # Optional: get latest rank for each team if you have a separate ranking dataframe
+    # For now we’ll sort by team name alphabetically
+    teams_sorted = df.sort_values(by='rank')['team']
+
+    # Define color scale for results
+    result_color = alt.Scale(
+        domain=["win", "draw", "loss"],
+        range=["#009E60", "#cacaca", "#FF4433"]
+    )
+
+    # Build heatmap
+    heatmap = alt.Chart(df_team).mark_rect(height=22, width=15, opacity=0.9).encode(
+        # x=alt.X('date:T', title='Date'),
+        x=alt.X('game_num:O', title='Game #'),
+        y=alt.Y('team:N',
+                sort=teams_sorted,  # or sort by rank
+                title='Team'),
+        color=alt.Color('result:N', scale=result_color, legend=alt.Legend(title="Result")),
+        tooltip=['team','opponent','venue','date', 'result', 'goals_for', 'goals_against']  # optional extra info
+    ).properties(
+        width=800,
+        height=550
+    )
+
+    return heatmap
+
+
+
 #### VISUAL 1
 def chart_heatmap_table_summary(df_rankings):
     df = df_rankings
