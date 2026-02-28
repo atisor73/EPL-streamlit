@@ -34,18 +34,18 @@ season_ref = st.radio(
     "Select Season",
     ["Season 1", "Season 2"],
     horizontal=True,
-    key='season_ref'
+    key='season_ref',
 )
 
 # --- Conditional rendering ---
-if season_ref == "Season 1":
+if season_ref == "Season 2":
     st.altair_chart(
-        chart_mean_err_ref(df_match_1),
+        chart_mean_err_ref(df_match_2),
         use_container_width=False
     )
 else:
     st.altair_chart(
-        chart_mean_err_ref(df_match_2),
+        chart_mean_err_ref(df_match_1),
         use_container_width=False
     )
 
@@ -73,14 +73,14 @@ season_team = st.radio(
 
 
 # --- Conditional rendering ---
-if season_team == "Season 1":
+if season_team == "Season 2":
     st.altair_chart(
-        chart_mean_err_team(df_team_1, df_rankings_1),
+        chart_mean_err_team(df_team_2, df_rankings_2),
         use_container_width=False
     )
 else:
     st.altair_chart(
-        chart_mean_err_team(df_team_2, df_rankings_2),
+        chart_mean_err_team(df_team_1, df_rankings_1),
         use_container_width=False
     )
 

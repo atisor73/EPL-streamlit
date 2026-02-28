@@ -69,20 +69,20 @@ left, center, right = st.columns([1, 2, 1])
 with center:
     season = st.segmented_control(
         "Select Season",
-        ["Season 1", "Season 2"]
+        ["Season 1", "Season 2"],
     )
 
 
 
 # --- Conditional rendering ---
-if season == "Season 1":
+if season == "Season 2":
     st.altair_chart(
-        chart_heatmap(df_match_1, df_team_1, df_rankings_1),
+        chart_heatmap(df_match_2, df_team_2, df_rankings_2),
         use_container_width=False
     )
 else:
     st.altair_chart(
-        chart_heatmap(df_match_2, df_team_2, df_rankings_2),
+        chart_heatmap(df_match_1, df_team_1, df_rankings_1),
         use_container_width=False
     )
 

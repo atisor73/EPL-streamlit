@@ -34,15 +34,15 @@ left, center, right = st.columns([1, 2, 1])
 with center:
     season = st.segmented_control(
         "Select Season",
-        ["Season 1", "Season 2"]
+        ["Season 1", "Season 2"],
     )
 
 
-if season == "Season 1":
-    with open("images/voronoi_s1.svg", "r") as f:
+if season == "Season 2":
+    with open("images/voronoi_s2.svg", "r") as f:
         svg = f.read()
 else:
-    with open("images/voronoi_s2.svg", "r") as f:
+    with open("images/voronoi_s1.svg", "r") as f:
         svg = f.read()
 
 st.markdown(
@@ -59,14 +59,14 @@ st.header("Team Stats")
 
 
 # --- Conditional rendering ---
-if season == "Season 1":
+if season == "Season 2":
     st.altair_chart(
-        chart_heatmap_table_summary(df_rankings_1),
+        chart_heatmap_table_summary(df_rankings_2),
         use_container_width=False
     )
 else:
     st.altair_chart(
-        chart_heatmap_table_summary(df_rankings_2),
+        chart_heatmap_table_summary(df_rankings_1),
         use_container_width=False
     )
 
@@ -74,14 +74,14 @@ else:
 st.header("Foul Stats")
 
 # --- Conditional rendering ---
-if season == "Season 1":
+if season == "Season 2":
     st.altair_chart(
-        chart_heatmap_table_discipline(df_rankings_1, df_team_1),
+        chart_heatmap_table_discipline(df_rankings_2, df_team_2),
         use_container_width=False
     )
 else:
     st.altair_chart(
-        chart_heatmap_table_discipline(df_rankings_2, df_team_2),
+        chart_heatmap_table_discipline(df_rankings_1, df_team_1),
         use_container_width=False
     )
 st.markdown("""

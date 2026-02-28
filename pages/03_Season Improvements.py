@@ -67,9 +67,12 @@ st.altair_chart(
 )
 
 st.markdown("""
-    The green quadrants reflect the assumption that teams who score more goals in a new season will have higher rankings, \
-    and those who score fewer goals will have lower rankings. We see six cases of teams who score more goals in a new season that\
+    The green quadrants reflect the assumption that teams who score more goals in a new season will have higher rankings\
+    (New Castle, Chelsea, Fulham) , \
+    and those who score fewer goals will have lower rankings (Wolves, Everton). \
+    We see six cases of teams who score more goals in a new season that\
     end up with lower rankings \
     (Man City, Aston Villa, West Ham, Man U, Tottenham, Crystal Palace), and conversely three cases where teams that \
-    score fewer goals rise in rankings (Bournemouth, Brighton, Brentford). 
+    score fewer goals rise in rankings (Bournemouth, Brighton, Brentford). Liverpool is the only team who scored the \
+    exact same number of goals between the two seasons (and had a +2 ranking).
 """)
