@@ -5,7 +5,7 @@ from utils.io import load_data
 from charts.theme import base_theme
 from charts.visual1 import chart_heatmap
 
-st.set_page_config(page_title="English Premier League Dashboard", layout="wide")
+# st.set_page_config(page_title="English Premier League Dashboard", layout="wide")
 
 alt.themes.register("project", base_theme)
 alt.themes.enable("project")
