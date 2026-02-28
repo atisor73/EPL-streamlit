@@ -32,7 +32,7 @@ def chart_heatmap_table_summary(df_rankings):
     # Create heatmap
     heatmap = alt.Chart(df_melt).mark_rect().encode(
         x=alt.X('stat:N', title=None, sort=metric_order, axis=alt.Axis(labelAngle=0, orient='top')),
-        y=alt.Y('team_label:N', title=None, sort=team_order),
+        y=alt.Y('team_label:N', title=None, sort=team_order, axis=alt.Axis(labelLimit=500, labelFontSize=12)),
         color=alt.Color('value:Q', 
                         scale=alt.Scale(scheme='magma', reverse=True, domain=[-70, 120],),  # or 'reds', 'blues'
                         legend=None),
@@ -42,12 +42,12 @@ def chart_heatmap_table_summary(df_rankings):
     # Overlay text
     text = alt.Chart(df_melt).mark_text(baseline='middle', fontSize=12).encode(
         x=alt.X('stat:N', sort=metric_order, axis=alt.Axis(labelAngle=0, orient='top')),
-        y=alt.Y('team_label:N', sort=team_order),
+        y=alt.Y('team_label:N', sort=team_order, axis=alt.Axis(labelLimit=500, labelFontSize=12)),
         text='value_label:N',
         color=alt.value('#cacaca')
     )
 
-    final_chart = (heatmap + text).properties(width=900, height=500).configure_text(
+    final_chart = (heatmap + text).properties(width=750, height=500).configure_text(
         font='Courier'
     ).configure_axis(
         labelFont='Courier',
@@ -98,7 +98,7 @@ def chart_heatmap_table_discipline(df_rankings, df_team):
     # Heatmap with normalized color per row
     heatmap = alt.Chart(df_melt).mark_rect().encode(
         x=alt.X('stat:N', title=None, sort=metric_order, axis=alt.Axis(labelAngle=0, orient='top')),
-        y=alt.Y('team_label:N', title=None, sort=team_order),
+        y=alt.Y('team_label:N', title=None, sort=team_order, axis=alt.Axis(labelLimit=500, labelFontSize=12)),
         color=alt.Color('value_norm:Q',
                         scale=alt.Scale(scheme='reds', reverse=False, domain=[0, 1]),
                         legend=None),
@@ -108,13 +108,13 @@ def chart_heatmap_table_discipline(df_rankings, df_team):
     # Text overlay
     text = alt.Chart(df_melt).mark_text(baseline='middle', fontSize=12).encode(
         x=alt.X('stat:N', sort=metric_order),
-        y=alt.Y('team_label:N', sort=team_order),
+        y=alt.Y('team_label:N', sort=team_order, axis=alt.Axis(labelLimit=500, labelFontSize=12)),
         text='value_label:N',
         color=alt.value('#cacaca')
     )
 
     # Combine
-    final_chart = (heatmap + text).properties(width=900, height=500).configure_text(
+    final_chart = (heatmap + text).properties(width=750, height=500).configure_text(
         font='Courier'
     ).configure_axis(
         labelFont='Courier',

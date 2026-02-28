@@ -57,11 +57,21 @@ st.markdown(
 )
 
 # --- Radio toggle ---
-season = st.radio(
-    "Select Season",
-    ["Season 1", "Season 2"],
-    horizontal=True
-)
+# season = st.radio(
+#     "Select Season",
+#     ["Season 1", "Season 2"],
+#     horizontal=True
+# )
+
+# Centering widget
+left, center, right = st.columns([1, 2, 1])
+
+with center:
+    season = st.segmented_control(
+        "Select Season",
+        ["Season 1", "Season 2"]
+    )
+
 
 
 # --- Conditional rendering ---
