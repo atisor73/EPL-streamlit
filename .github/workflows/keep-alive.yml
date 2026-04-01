@@ -14,4 +14,4 @@ jobs:
 
     steps:
       - name: Ping Streamlit App
-        run: curl -fsS https://your-app-url.streamlit.app
+        run: curl -fsS https://atisor73-epl-dashboard.streamlit.app/
