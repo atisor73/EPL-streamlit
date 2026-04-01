@@ -1,7 +1,6 @@
 import requests
 import time
-# Replace with your actual app URL
-url = "https://your-app-name.streamlit.app"
+url = "https://atisor73-epl-dashboard.streamlit.app/"
 while True:
     try:
         requests.get(url)

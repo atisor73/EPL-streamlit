@@ -15,3 +15,12 @@ jobs:
 
       - name: Run script
         run: python keep_alive.py
+
+
+jobs:
+  keep-alive:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Ping Streamlit App
+        run: curl https://atisor73-epl-dashboard.streamlit.app/
