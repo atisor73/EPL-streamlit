@@ -1,26 +1,17 @@
-name: Keep Alive
+name: Keep Streamlit Alive
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 on:
   schedule:
-    - cron: '0 0 * * *'   # Runs once per day at midnight UTC
-  workflow_dispatch:       # Allows manual run
+    - cron: '0 */6 * * *'   # every 6 hours
+  workflow_dispatch:
 
 jobs:
-  run-script:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-
-      - name: Run script
-        run: python keep_alive.py
-
-
-jobs:
-  keep-alive:
+  ping:
     runs-on: ubuntu-latest
 
     steps:
       - name: Ping Streamlit App
-        run: curl https://atisor73-epl-dashboard.streamlit.app/
+        run: curl -fsS https://your-app-url.streamlit.app
