@@ -20,9 +20,9 @@ jobs:
 
       - name: List files
         run: ls -la
-        
+
       - name: Install requests
         run: pip install requests
 
       - name: Run keep alive script
-        run: python keep_alive.py
+        run: python keep-alive.py
