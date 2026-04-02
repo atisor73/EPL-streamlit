@@ -24,5 +24,8 @@ jobs:
       - name: Install requests
         run: pip install requests
 
+      - name: Install deps
+        run: pip install websocket-client
+        
       - name: Run keep alive script
         run: python keep-alive.py
