@@ -1,31 +1,31 @@
 name: Empty Commit Push
 
 on:
+  workflow_dispatch:
   schedule:
-    - cron: '0 */6 * * *'  # every 6 hours
-  workflow_dispatch:        # allows manual trigger
+    - cron: "0 */6 * * *"  # every 6 hours
 
 jobs:
-  push-empty-commit:
+  push:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
+      - name: Checkout repo
         uses: actions/checkout@v4
 
       - name: Configure Git
         run: |
-          git config user.name "atisor73"
-          git config user.email "rosita.fu99@gmail.com"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Create empty commit
+      - name: Make empty commit
         run: |
-          git commit --amend --allow-empty -m "Trigger workflow: empty commit"
+          git commit --allow-empty -m "Keep repo active"
 
-      - name: Push changes
-        run: git push
-
-
+      - name: Push commit
+        env:
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+        run: |
+          git push https://x-access-token:$PAT_TOKEN@github.com/atisor73/EPL-streamlit.git
 # name: Keep Streamlit Alive
 
 # on:
