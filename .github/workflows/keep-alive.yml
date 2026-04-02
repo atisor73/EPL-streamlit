@@ -1,31 +1,75 @@
-name: Keep Streamlit Alive
+name: Empty Commit Push
 
 on:
   schedule:
-    - cron: '0 * * * *'   # every hour
-  workflow_dispatch:
+    - cron: '0 */6 * * *'  # every 6 hours
+  workflow_dispatch:        # allows manual trigger
 
 jobs:
-  ping:
+  push-empty-commit:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
+      - name: Configure Git
+        run: |
+          git config user.name "atisor73"
+          git config user.email "rosita.fu99@gmail.com"
 
-      - name: List files
-        run: ls -la
+      - name: Create empty commit
+        run: |
+          git commit --amend --allow-empty -m "Trigger workflow: empty commit"
 
-      - name: Install requests
-        run: pip install requests
+      - name: Push changes
+        run: git push
 
-      - name: Install deps
-        run: pip install websocket-client
-        
-      - name: Run keep alive script
-        run: python keep-alive.py
+
+# name: Keep Streamlit Alive
+
+# on:
+#   schedule:
+#     - cron: '0 * * * *'   # every hour
+#   workflow_dispatch:
+
+# jobs:
+#   ping:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Checkout repo
+#         uses: actions/checkout@v4
+
+#       - name: Set up Python
+#         uses: actions/setup-python@v5
+#         with:
+#           python-version: '3.11'
+
+#       - name: List files
+#         run: ls -la
+
+#       - name: Install requests
+#         run: pip install requests
+
+#       - name: Install deps
+#         run: pip install websocket-client
+
+#       - name: Run keep alive script
+#         run: python keep-alive.py
+
+
+
+# name: Test Workflow
+
+# on:
+#   workflow_dispatch:
+#   schedule:
+#     - cron: '0 0,10,20 * * *'
+
+# jobs:
+#   test:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Print hello
+#         run: echo "Hello world"
