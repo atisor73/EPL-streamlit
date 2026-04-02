@@ -1,11 +1,13 @@
 import requests
-import time
-url = "https://atisor73-epl-dashboard.streamlit.app/"
-while True:
-    try:
-        requests.get(url)
-        print("Pinged app")
-    except Exception as e:
-        print(f"Error: {e}")
-    time.sleep(3600) # Ping every hour
 
+urls = [
+    "https://atisor73-epl-dashboard.streamlit.app/",
+    "https://atisor73-epl-dashboard.streamlit.app/_stcore/health"
+]
+
+for url in urls:
+    try:
+        r = requests.get(url, timeout=30)
+        print(url, r.status_code)
+    except Exception as e:
+        print(url, e)

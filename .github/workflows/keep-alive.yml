@@ -1,11 +1,8 @@
 name: Keep Streamlit Alive
 
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
 on:
   schedule:
-    - cron: '0 */6 * * *'   # every 6 hours
+    - cron: '0 * * * *'   # every hour
   workflow_dispatch:
 
 jobs:
@@ -13,6 +10,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Ping Streamlit App
-        # run: curl -fsS https://atisor73-epl-dashboard.streamlit.app/
-        run: curl -A "Mozilla/5.0" -L https://atisor73-epl-dashboard.streamlit.app/
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install requests
+        run: pip install requests
+
+      - name: Run keep alive script
+        run: python keep_alive.py
