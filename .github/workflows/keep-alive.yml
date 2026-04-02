@@ -14,4 +14,5 @@ jobs:
 
     steps:
       - name: Ping Streamlit App
-        run: curl -fsS https://atisor73-epl-dashboard.streamlit.app/
+        # run: curl -fsS https://atisor73-epl-dashboard.streamlit.app/
+        run: curl -A "Mozilla/5.0" -L https://atisor73-epl-dashboard.streamlit.app/
