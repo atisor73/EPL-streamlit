@@ -1,13 +1,23 @@
 import requests
 
-urls = [
-    "https://atisor73-epl-dashboard.streamlit.app/",
-    "https://atisor73-epl-dashboard.streamlit.app/_stcore/health"
+base = "https://atisor73-epl-dashboard.streamlit.app"
+
+endpoints = [
+    "/", 
+    "/_stcore/health",
+    "/_stcore/stream",
 ]
 
-for url in urls:
+for ep in endpoints:
     try:
-        r = requests.get(url, timeout=30)
-        print(url, r.status_code)
+        r = requests.get(base + ep, timeout=30)
+        print("GET", ep, r.status_code)
     except Exception as e:
-        print(url, e)
+        print("GET", ep, e)
+
+# Try POST to wake
+try:
+    r = requests.post(base + "/_stcore/health", timeout=30)
+    print("POST health", r.status_code)
+except Exception as e:
+    print("POST health", e)
