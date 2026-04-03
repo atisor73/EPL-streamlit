@@ -11,7 +11,9 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
-
+        with:
+          persist-credentials: false
+          
       - name: Configure Git
         run: |
           git config user.name "atisor73"
@@ -25,7 +27,11 @@ jobs:
         env:
           PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
-          git push https://x-access-token:$PAT_TOKEN@github.com/atisor73/EPL-streamlit.git
+          git remote set-url origin https://x-access-token:${PAT_TOKEN}@github.com/atisor73/EPL-streamlit.git
+          git push origin HEAD:main
+
+
+
 # name: Keep Streamlit Alive
 
 # on:
